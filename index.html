@@ -200,11 +200,12 @@
       const bottomSection = document.querySelector('.bottom-section');
     
       const addDarken = (element) => {
-        element.classList.add('half-darken');
+        element.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+        element.style.transition = 'background-color 0.2s ease';
       };
     
       const removeDarken = (element) => {
-        element.classList.remove('half-darken');
+        element.style.backgroundColor = ''; // Reset to default
       };
     
       // Add event listeners for touch and mouse events
