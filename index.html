@@ -3,8 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <title>Game Interface</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -129,14 +127,24 @@
         const setupHold = (element, action) => {
           element.addEventListener('mousedown', () => {
             action();
+            element.classList.add('pressed'); // Add pressed class
             holdInterval = setInterval(action, 200);
           });
-    
-          ['mouseup', 'mouseleave'].forEach(evt =>
-            element.addEventListener(evt, () => clearInterval(holdInterval))
+
+          element.addEventListener('touchstart', () => {
+            action();
+            element.classList.add('pressed'); // Add pressed class
+            holdInterval = setInterval(action, 200);
+          });
+
+          ['mouseup', 'mouseleave', 'touchend', 'touchcancel'].forEach(evt =>
+            element.addEventListener(evt, () => {
+              clearInterval(holdInterval);
+              element.classList.remove('pressed'); // Remove pressed class
+            })
           );
         };
-    
+
         const topHalf = document.createElement('div');
         topHalf.className = 'top-half';
         topHalf.style.position = 'absolute';
@@ -145,7 +153,7 @@
         topHalf.style.width = '100%';
         topHalf.style.height = '50%';
         topHalf.style.cursor = 'pointer';
-    
+
         const bottomHalf = document.createElement('div');
         bottomHalf.className = 'bottom-half';
         bottomHalf.style.position = 'absolute';
@@ -154,10 +162,10 @@
         bottomHalf.style.width = '100%';
         bottomHalf.style.height = '50%';
         bottomHalf.style.cursor = 'pointer';
-    
+
         setupHold(topHalf, increment);
         setupHold(bottomHalf, decrement);
-    
+
         card.appendChild(topHalf);
         card.appendChild(bottomHalf);
       });

@@ -183,18 +183,7 @@
     transition: transform 0.2s ease;
   }
 
-/* Darken effect on press */
-#topHalf:active, #bottomHalf:active {
-    background-color: rgba(0, 0, 0, 0.2); /* Adjust the color and opacity as needed */
-}
-
-/* Ensure visibility on iOS */
-#topHalf, #bottomHalf {
-    -webkit-tap-highlight-color: transparent; /* Prevent default highlight */
-}
-
-/* Disable text selection and magnification */
-body, #topHalf, #bottomHalf {
-    -webkit-user-select: none; /* Disable text selection */
-    -webkit-touch-callout: none; /* Disable callout (e.g., magnify) */
-}
+  .top-half:active,
+  .bottom-half:active {
+    background-color: rgba(0, 0, 0, 0.1); /* Darken effect */
+  }
