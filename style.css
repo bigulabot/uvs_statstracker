@@ -16,6 +16,7 @@
   body {
     -webkit-user-select: none; /* Disable text selection on iOS */
     -webkit-touch-callout: none; /* Disable long-press context menu on iOS */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
   }
   
   .container {

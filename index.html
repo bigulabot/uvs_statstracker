@@ -128,32 +128,51 @@
           }
         };
         const setupHold = (element, action) => {
-          element.addEventListener('mousedown', () => {
-            element.classList.add('pressed'); // Add class on press
+          let isTouch = false; // Track if the event is a touch event
+          let holdInterval;
+        
+          // Handle mouse events
+          element.addEventListener('mousedown', (e) => {
+            if (isTouch) return; // Ignore if a touch event is active
+            element.classList.add('pressed');
             action();
-            holdInterval = setInterval(action, 200);
+            holdInterval = setInterval(action, 200); // Repeat action every 200ms
           });
         
-          ['mouseup', 'mouseleave'].forEach(evt =>
-            element.addEventListener(evt, () => {
-              element.classList.remove('pressed'); // Remove class on release
-              clearInterval(holdInterval);
-            })
-          );
-        
-          // For touch devices
-          element.addEventListener('touchstart', () => {
-            element.classList.add('pressed'); // Add class on touch
-            action();
-            holdInterval = setInterval(action, 200);
+          element.addEventListener('mouseup', () => {
+            if (isTouch) return; // Ignore if a touch event is active
+            element.classList.remove('pressed');
+            clearInterval(holdInterval);
           });
         
-          ['touchend', 'touchcancel'].forEach(evt =>
-            element.addEventListener(evt, () => {
-              element.classList.remove('pressed'); // Remove class on touch end
-              clearInterval(holdInterval);
-            })
-          );
+          element.addEventListener('mouseleave', () => {
+            if (isTouch) return; // Ignore if a touch event is active
+            element.classList.remove('pressed');
+            clearInterval(holdInterval);
+          });
+        
+          // Handle touch events
+          element.addEventListener('touchstart', (e) => {
+            isTouch = true; // Mark as touch event
+            element.classList.add('pressed');
+            action();
+            holdInterval = setInterval(action, 200); // Repeat action every 200ms
+            e.preventDefault(); // Prevent mouse event from firing
+          });
+        
+          element.addEventListener('touchend', () => {
+            element.classList.remove('pressed');
+            clearInterval(holdInterval);
+          });
+        
+          element.addEventListener('touchcancel', () => {
+            element.classList.remove('pressed');
+            clearInterval(holdInterval);
+          });
+        };
+        
+        const setupClick = (element, action) => {
+          element.addEventListener('click', action); // Trigger action on click
         };
     
         const topHalf = document.createElement('div');
@@ -174,8 +193,8 @@
         bottomHalf.style.height = '50%';
         bottomHalf.style.cursor = 'pointer';
     
-        setupHold(topHalf, increment);
-        setupHold(bottomHalf, decrement);
+        setupClick(topHalf, increment);
+        setupClick(bottomHalf, decrement);
     
         card.appendChild(topHalf);
         card.appendChild(bottomHalf);
