@@ -226,6 +226,41 @@
         section.addEventListener('touchcancel', () => removeDarken(section));
       });
     });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const resetButton = document.querySelector('.round-button');
+
+      resetButton.addEventListener('touchstart', () => {
+        resetButton.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
+        resetButton.style.transform = 'scale(0.95)';
+      });
+
+      resetButton.addEventListener('touchend', () => {
+        resetButton.style.backgroundColor = '';
+        resetButton.style.transform = '';
+      });
+
+      resetButton.addEventListener('touchcancel', () => {
+        resetButton.style.backgroundColor = '';
+        resetButton.style.transform = '';
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const resetButton = document.querySelector('.round-button');
+
+      resetButton.addEventListener('touchstart', () => {
+        resetButton.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
+      });
+
+      resetButton.addEventListener('touchend', () => {
+        resetButton.style.backgroundColor = '';
+      });
+
+      resetButton.addEventListener('touchcancel', () => {
+        resetButton.style.backgroundColor = '';
+      });
+    });
   </script>
 </body>
 </html>
