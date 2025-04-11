@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100dvh;
+    width: 100vw;
+    background-color: #000;
+    font-family: "Inter", sans-serif;
+    overflow: hidden; 
+  }
+  
+  .container {
+    height: 100%;
+    max-width: 430px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+    justify-content: space-between; /* ✨ Cards spread evenly */
+  }
+  
+
+  .top-section,
+.bottom-section {
+  display: flex;
+  flex: 1;
+  gap: 10px;
+}
+
+  .card {
+    flex: 1;
+    background: #D9D9D9;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  .card h1 {
+    font-weight: 400;
+    font-size: 128px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+
+  }
+  
+  .card .icon {
+    font-size: 20px;
+  }
+
+  .plus img{
+    width: 47px;
+    padding-bottom: 30px;
+    padding-top: 10px;
+  }
+  
+  .minus {
+    padding-top: 18px;
+  }
+  
+  .center-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  .round-button {
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 18px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+}
+  .card p{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 22px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .center-controls button:not(.active) img {
+    filter: grayscale(100%);
+  }
+
+  
+  .top-section,
+  .bottom-section {
+    display: flex;
+    flex: 1;
+    gap: 10px;
+  }
+  
+  .center-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    height: 60px;
+  }
+  
+  .center-controls img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .round-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .center-controls button {
+    background: #D9D9D9;
+    border: none;
+    border-radius: 8px;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 71px; 
+    height: 71px; 
+    transition: background-color 0.2s;
+  }
+  
+  .center-controls button.active img {
+    filter: none;
+  }
+  
+  .plus:active, .minus:active {
+    filter: brightness(85%);
+    transform: scale(0.95);
+  }
+    
+  .center-controls button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%); 
+  }
+
+  .level.high.active svg rect:first-child {
+    fill: red;
+  }
+  .level.mid.active svg rect:nth-child(2) {
+    fill: orange;
+  }
+  .level.low.active svg rect:nth-child(3) {
+    fill: yellow;
+  }
+
+  .level.low.active svg .bg {
+    fill: yellow;
+  }
+  
+  .center-controls button.active {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+  }
+
+  .half-darken {
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: background-color 0.2s ease;
+  }
+
