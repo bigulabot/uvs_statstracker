@@ -118,41 +118,33 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       let holdInterval;
-      const debounce = (func, delay) => {
-        let timeout;
-        return (...args) => {
-          if (timeout) return; // Prevent rapid triggering
-          func(...args);
-          timeout = setTimeout(() => {
-            timeout = null;
-          }, delay);
-        };
-      };
-
       const cards = document.querySelectorAll('.card');
       cards.forEach(card => {
         const type = card.querySelector('p').textContent.toLowerCase();
         const counter = card.querySelector('h1');
-        const increment = debounce(() => {
+        const increment = () => {
           counter.textContent = parseInt(counter.textContent) + 1;
-        }, 200); // 200ms delay
-
-        const decrement = debounce(() => {
+        };
+        const decrement = () => {
           if (type === 'speed' || type === 'damage') {
             counter.textContent = parseInt(counter.textContent) - 1;
           } else {
             counter.textContent = Math.max(0, parseInt(counter.textContent) - 1);
           }
-        }, 200); // 200ms delay
-
+        };
         const setupHold = (element, action) => {
-          element.addEventListener('mousedown', () => {
+          let isTouch = false; // Flag to track touch events
+
+          element.addEventListener('touchstart', (e) => {
+            isTouch = true; // Set the flag to true for touch events
             action();
             element.classList.add('pressed'); // Add pressed class
             holdInterval = setInterval(action, 200);
+            e.preventDefault(); // Prevent default behavior
           });
 
-          element.addEventListener('touchstart', () => {
+          element.addEventListener('mousedown', (e) => {
+            if (isTouch) return; // Skip if touch event was triggered
             action();
             element.classList.add('pressed'); // Add pressed class
             holdInterval = setInterval(action, 200);
