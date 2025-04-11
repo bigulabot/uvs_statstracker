@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Game Interface</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Game Interface">
+  <title>Game Interface</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
@@ -128,51 +127,18 @@
           }
         };
         const setupHold = (element, action) => {
-          let isTouch = false; // Track if the event is a touch event
-          let holdInterval;
-        
-          // Handle mouse events
-          element.addEventListener('mousedown', (e) => {
-            if (isTouch) return; // Ignore if a touch event is active
-            element.classList.add('pressed');
+          element.addEventListener('mousedown', () => {
+            element.classList.add('darken'); // Add darken effect
             action();
-            holdInterval = setInterval(action, 200); // Repeat action every 200ms
+            holdInterval = setInterval(action, 200);
           });
-        
-          element.addEventListener('mouseup', () => {
-            if (isTouch) return; // Ignore if a touch event is active
-            element.classList.remove('pressed');
-            clearInterval(holdInterval);
-          });
-        
-          element.addEventListener('mouseleave', () => {
-            if (isTouch) return; // Ignore if a touch event is active
-            element.classList.remove('pressed');
-            clearInterval(holdInterval);
-          });
-        
-          // Handle touch events
-          element.addEventListener('touchstart', (e) => {
-            isTouch = true; // Mark as touch event
-            element.classList.add('pressed');
-            action();
-            holdInterval = setInterval(action, 200); // Repeat action every 200ms
-            e.preventDefault(); // Prevent mouse event from firing
-          });
-        
-          element.addEventListener('touchend', () => {
-            element.classList.remove('pressed');
-            clearInterval(holdInterval);
-          });
-        
-          element.addEventListener('touchcancel', () => {
-            element.classList.remove('pressed');
-            clearInterval(holdInterval);
-          });
-        };
-        
-        const setupClick = (element, action) => {
-          element.addEventListener('click', action); // Trigger action on click
+    
+          ['mouseup', 'mouseleave'].forEach(evt =>
+            element.addEventListener(evt, () => {
+              element.classList.remove('darken'); // Remove darken effect
+              clearInterval(holdInterval);
+            })
+          );
         };
     
         const topHalf = document.createElement('div');
@@ -193,8 +159,8 @@
         bottomHalf.style.height = '50%';
         bottomHalf.style.cursor = 'pointer';
     
-        setupClick(topHalf, increment);
-        setupClick(bottomHalf, decrement);
+        setupHold(topHalf, increment);
+        setupHold(bottomHalf, decrement);
     
         card.appendChild(topHalf);
         card.appendChild(bottomHalf);
@@ -229,6 +195,12 @@
         buttons.forEach(btn => btn.classList.remove("active"));
         button.classList.add("active");
       });
+    });
+
+    document.addEventListener('touchstart', (e) => {
+      if (e.target.tagName === 'BUTTON' || e.target.classList.contains('top-half') || e.target.classList.contains('bottom-half')) {
+        e.preventDefault(); // Disable long press
+      }
     });
   </script>
 </body>
