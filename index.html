@@ -2,16 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Game Interface</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    .top-section, .bottom-section {
-      position: relative;
-      z-index: 1;
-      pointer-events: auto;
-    }
-  </style>
 </head>
 <body>
   <div class="container">
@@ -133,16 +126,12 @@
         };
         const setupHold = (element, action) => {
           element.addEventListener('mousedown', () => {
-            element.classList.add('half-darken'); // Add darkening effect
             action();
             holdInterval = setInterval(action, 200);
           });
     
           ['mouseup', 'mouseleave'].forEach(evt =>
-            element.addEventListener(evt, () => {
-              element.classList.remove('half-darken'); // Remove darkening effect
-              clearInterval(holdInterval);
-            })
+            element.addEventListener(evt, () => clearInterval(holdInterval))
           );
         };
     
@@ -199,87 +188,6 @@
       button.addEventListener("click", () => {
         buttons.forEach(btn => btn.classList.remove("active"));
         button.classList.add("active");
-      });
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const topSection = document.querySelector('.top-section');
-      const bottomSection = document.querySelector('.bottom-section');
-    
-      const addDarken = (element) => {
-        element.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-        element.style.transition = 'background-color 0.2s ease';
-      };
-    
-      const removeDarken = (element) => {
-        element.style.backgroundColor = ''; // Reset to default
-      };
-    
-      // Add event listeners for touch and mouse events
-      [topSection, bottomSection].forEach((section) => {
-        section.addEventListener('mousedown', () => addDarken(section));
-        section.addEventListener('mouseup', () => removeDarken(section));
-        section.addEventListener('mouseleave', () => removeDarken(section));
-    
-        section.addEventListener('touchstart', () => addDarken(section));
-        section.addEventListener('touchend', () => removeDarken(section));
-        section.addEventListener('touchcancel', () => removeDarken(section));
-      });
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const resetButton = document.querySelector('.round-button');
-
-      resetButton.addEventListener('touchstart', () => {
-        resetButton.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
-        resetButton.style.transform = 'scale(0.95)';
-      });
-
-      resetButton.addEventListener('touchend', () => {
-        resetButton.style.backgroundColor = '';
-        resetButton.style.transform = '';
-      });
-
-      resetButton.addEventListener('touchcancel', () => {
-        resetButton.style.backgroundColor = '';
-        resetButton.style.transform = '';
-      });
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const resetButton = document.querySelector('.round-button');
-
-      resetButton.addEventListener('touchstart', () => {
-        resetButton.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
-      });
-
-      resetButton.addEventListener('touchend', () => {
-        resetButton.style.backgroundColor = '';
-      });
-
-      resetButton.addEventListener('touchcancel', () => {
-        resetButton.style.backgroundColor = '';
-      });
-    });
-
-    document.addEventListener('touchstart', function (event) {
-      if (event.touches.length > 1) {
-        event.preventDefault(); // Prevent zoom on multi-touch
-      }
-    }, { passive: false });
-    
-    let lastTouchEnd = 0;
-    document.addEventListener('touchend', function (event) {
-      const now = new Date().getTime();
-      if (now - lastTouchEnd <= 300) {
-        event.preventDefault(); // Prevent double-tap zoom
-      }
-      lastTouchEnd = now;
-    }, { passive: false });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      document.body.addEventListener('contextmenu', (e) => {
-        e.preventDefault(); // Disable right-click or long-press context menu
       });
     });
   </script>
