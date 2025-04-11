@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <title>Game Interface</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -128,16 +128,12 @@
         };
         const setupHold = (element, action) => {
           element.addEventListener('mousedown', () => {
-            element.classList.add('darken'); // Add darken effect
             action();
             holdInterval = setInterval(action, 200);
           });
     
           ['mouseup', 'mouseleave'].forEach(evt =>
-            element.addEventListener(evt, () => {
-              element.classList.remove('darken'); // Remove darken effect
-              clearInterval(holdInterval);
-            })
+            element.addEventListener(evt, () => clearInterval(holdInterval))
           );
         };
     
@@ -195,12 +191,6 @@
         buttons.forEach(btn => btn.classList.remove("active"));
         button.classList.add("active");
       });
-    });
-
-    document.addEventListener('touchstart', (e) => {
-      if (e.target.tagName === 'BUTTON' || e.target.classList.contains('top-half') || e.target.classList.contains('bottom-half')) {
-        e.preventDefault(); // Disable long press
-      }
     });
   </script>
 </body>
