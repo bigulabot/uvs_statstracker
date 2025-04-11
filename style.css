@@ -13,6 +13,13 @@
     overflow: hidden; 
   }
   
+  body, .container {
+    -webkit-user-select: none; /* Disable text selection */
+    -webkit-touch-callout: none; /* Disable long-press context menu */
+    user-select: none;
+    touch-callout: none;
+  }
+  
   .container {
     height: 100%;
     max-width: 430px;
@@ -178,13 +185,18 @@
     fill: yellow;
   }
   
-  .center-controls button.active {
-    transform: scale(1.1);
-    transition: transform 0.2s ease;
-  }
-
   .half-darken {
     background-color: rgba(0, 0, 0, 0.5);
     transition: background-color 0.2s ease;
+  }
+
+  .round-button:active {
+    background-color: rgba(255, 255, 255, 0.3); /* Highlight effect */
+    transition: background-color 0.2s ease;
+  }
+
+  .round-button:active {
+    filter: brightness(70%); /* Darken effect */
+    transition: filter 0.2s ease;
   }
 
