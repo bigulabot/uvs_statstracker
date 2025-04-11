@@ -13,6 +13,11 @@
     overflow: hidden; 
   }
   
+  body {
+    -webkit-user-select: none; /* Disable text selection on iOS */
+    -webkit-touch-callout: none; /* Disable long-press context menu on iOS */
+  }
+  
   .container {
     height: 100%;
     max-width: 430px;
