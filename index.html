@@ -2,17 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Game Interface</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Disable text selection and long-press magnify */
-    body, .container {
-      -webkit-touch-callout: none; /* Disable long press */
-      -webkit-user-select: none;  /* Disable text selection */
-      user-select: none;
-    }
-  </style>
 </head>
 <body>
   <div class="container">
@@ -133,31 +125,16 @@
           }
         };
         const setupHold = (element, action) => {
-          let isTouch = false; // Flag to track touch events
-
-          element.addEventListener('touchstart', (e) => {
-            isTouch = true; // Set the flag to true for touch events
+          element.addEventListener('mousedown', () => {
             action();
-            element.classList.add('pressed'); // Add pressed class
-            holdInterval = setInterval(action, 200);
-            e.preventDefault(); // Prevent default behavior
-          });
-
-          element.addEventListener('mousedown', (e) => {
-            if (isTouch) return; // Skip if touch event was triggered
-            action();
-            element.classList.add('pressed'); // Add pressed class
             holdInterval = setInterval(action, 200);
           });
-
-          ['mouseup', 'mouseleave', 'touchend', 'touchcancel'].forEach(evt =>
-            element.addEventListener(evt, () => {
-              clearInterval(holdInterval);
-              element.classList.remove('pressed'); // Remove pressed class
-            })
+    
+          ['mouseup', 'mouseleave'].forEach(evt =>
+            element.addEventListener(evt, () => clearInterval(holdInterval))
           );
         };
-
+    
         const topHalf = document.createElement('div');
         topHalf.className = 'top-half';
         topHalf.style.position = 'absolute';
@@ -166,7 +143,7 @@
         topHalf.style.width = '100%';
         topHalf.style.height = '50%';
         topHalf.style.cursor = 'pointer';
-
+    
         const bottomHalf = document.createElement('div');
         bottomHalf.className = 'bottom-half';
         bottomHalf.style.position = 'absolute';
@@ -175,10 +152,10 @@
         bottomHalf.style.width = '100%';
         bottomHalf.style.height = '50%';
         bottomHalf.style.cursor = 'pointer';
-
+    
         setupHold(topHalf, increment);
         setupHold(bottomHalf, decrement);
-
+    
         card.appendChild(topHalf);
         card.appendChild(bottomHalf);
       });
@@ -211,23 +188,6 @@
       button.addEventListener("click", () => {
         buttons.forEach(btn => btn.classList.remove("active"));
         button.classList.add("active");
-      });
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      // Prevent long press, double-tap zoom, and magnify on iOS
-      document.body.addEventListener('touchstart', (e) => {
-        if (e.touches.length > 1) {
-          e.preventDefault(); // Prevent multi-touch zoom
-        }
-      }, { passive: false });
-
-      document.body.addEventListener('gesturestart', (e) => {
-        e.preventDefault(); // Prevent pinch-to-zoom
-      });
-
-      document.body.addEventListener('dblclick', (e) => {
-        e.preventDefault(); // Prevent double-tap zoom
       });
     });
   </script>
