@@ -197,7 +197,9 @@
       document.addEventListener('touchend', (event) => {
         const now = new Date().getTime();
         if (now - lastTouchEnd <= 300) {
-          event.preventDefault(); // Prevent double-tap zoom
+          if (event.target.tagName !== 'BUTTON' && !event.target.closest('.card')) {
+            event.preventDefault(); // Prevent double-tap zoom only
+          }
         }
         lastTouchEnd = now;
       }, { passive: false });
