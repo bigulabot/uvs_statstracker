@@ -194,6 +194,30 @@
         button.classList.add("active");
       });
     });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const topSection = document.querySelector('.top-section');
+      const bottomSection = document.querySelector('.bottom-section');
+    
+      const addDarken = (element) => {
+        element.classList.add('half-darken');
+      };
+    
+      const removeDarken = (element) => {
+        element.classList.remove('half-darken');
+      };
+    
+      // Add event listeners for touch and mouse events
+      [topSection, bottomSection].forEach((section) => {
+        section.addEventListener('mousedown', () => addDarken(section));
+        section.addEventListener('mouseup', () => removeDarken(section));
+        section.addEventListener('mouseleave', () => removeDarken(section));
+    
+        section.addEventListener('touchstart', () => addDarken(section));
+        section.addEventListener('touchend', () => removeDarken(section));
+        section.addEventListener('touchcancel', () => removeDarken(section));
+      });
+    });
   </script>
 </body>
 </html>
