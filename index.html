@@ -2,9 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
   <title>Game Interface</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Disable text selection and long-press magnify */
+    body, .container {
+      -webkit-touch-callout: none; /* Disable long press */
+      -webkit-user-select: none;  /* Disable text selection */
+      user-select: none;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -198,6 +206,23 @@
       button.addEventListener("click", () => {
         buttons.forEach(btn => btn.classList.remove("active"));
         button.classList.add("active");
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Prevent long press, double-tap zoom, and magnify on iOS
+      document.body.addEventListener('touchstart', (e) => {
+        if (e.touches.length > 1) {
+          e.preventDefault(); // Prevent multi-touch zoom
+        }
+      }, { passive: false });
+
+      document.body.addEventListener('gesturestart', (e) => {
+        e.preventDefault(); // Prevent pinch-to-zoom
+      });
+
+      document.body.addEventListener('dblclick', (e) => {
+        e.preventDefault(); // Prevent double-tap zoom
       });
     });
   </script>
