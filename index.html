@@ -190,6 +190,23 @@
         button.classList.add("active");
       });
     });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Prevent double-tap to zoom
+      let lastTouchEnd = 0;
+      document.addEventListener('touchend', (event) => {
+        const now = new Date().getTime();
+        if (now - lastTouchEnd <= 300) {
+          event.preventDefault(); // Prevent double-tap zoom
+        }
+        lastTouchEnd = now;
+      }, { passive: false });
+
+      // Prevent long-press to select
+      document.body.addEventListener('contextmenu', (event) => {
+        event.preventDefault(); // Disable context menu on long-press
+      });
+    });
   </script>
 </body>
 </html>

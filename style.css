@@ -13,6 +13,13 @@
     overflow: hidden; 
   }
   
+  body, .container {
+    -webkit-user-select: none; /* Disable text selection */
+    -webkit-touch-callout: none; /* Disable long-press context menu */
+    user-select: none;
+    touch-callout: none;
+  }
+  
   .container {
     height: 100%;
     max-width: 430px;
@@ -182,4 +189,3 @@
     transform: scale(1.1);
     transition: transform 0.2s ease;
   }
-  
