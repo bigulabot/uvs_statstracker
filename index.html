@@ -276,6 +276,12 @@
       }
       lastTouchEnd = now;
     }, { passive: false });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.addEventListener('contextmenu', (e) => {
+        e.preventDefault(); // Disable right-click or long-press context menu
+      });
+    });
   </script>
 </body>
 </html>
