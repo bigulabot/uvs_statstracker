@@ -118,20 +118,33 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       let holdInterval;
+      const debounce = (func, delay) => {
+        let timeout;
+        return (...args) => {
+          if (timeout) return; // Prevent rapid triggering
+          func(...args);
+          timeout = setTimeout(() => {
+            timeout = null;
+          }, delay);
+        };
+      };
+
       const cards = document.querySelectorAll('.card');
       cards.forEach(card => {
         const type = card.querySelector('p').textContent.toLowerCase();
         const counter = card.querySelector('h1');
-        const increment = () => {
+        const increment = debounce(() => {
           counter.textContent = parseInt(counter.textContent) + 1;
-        };
-        const decrement = () => {
+        }, 200); // 200ms delay
+
+        const decrement = debounce(() => {
           if (type === 'speed' || type === 'damage') {
             counter.textContent = parseInt(counter.textContent) - 1;
           } else {
             counter.textContent = Math.max(0, parseInt(counter.textContent) - 1);
           }
-        };
+        }, 200); // 200ms delay
+
         const setupHold = (element, action) => {
           element.addEventListener('mousedown', () => {
             action();
