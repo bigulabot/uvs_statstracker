@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
   <title>Game Interface</title>
   <link rel="stylesheet" href="style.css">
   <style>
@@ -261,6 +261,21 @@
         resetButton.style.backgroundColor = '';
       });
     });
+
+    document.addEventListener('touchstart', function (event) {
+      if (event.touches.length > 1) {
+        event.preventDefault(); // Prevent zoom on multi-touch
+      }
+    }, { passive: false });
+    
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+      const now = new Date().getTime();
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault(); // Prevent double-tap zoom
+      }
+      lastTouchEnd = now;
+    }, { passive: false });
   </script>
 </body>
 </html>
