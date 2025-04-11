@@ -126,12 +126,30 @@
         };
         const setupHold = (element, action) => {
           element.addEventListener('mousedown', () => {
+            element.classList.add('pressed'); // Add class on press
             action();
             holdInterval = setInterval(action, 200);
           });
-    
+        
           ['mouseup', 'mouseleave'].forEach(evt =>
-            element.addEventListener(evt, () => clearInterval(holdInterval))
+            element.addEventListener(evt, () => {
+              element.classList.remove('pressed'); // Remove class on release
+              clearInterval(holdInterval);
+            })
+          );
+        
+          // For touch devices
+          element.addEventListener('touchstart', () => {
+            element.classList.add('pressed'); // Add class on touch
+            action();
+            holdInterval = setInterval(action, 200);
+          });
+        
+          ['touchend', 'touchcancel'].forEach(evt =>
+            element.addEventListener(evt, () => {
+              element.classList.remove('pressed'); // Remove class on touch end
+              clearInterval(holdInterval);
+            })
           );
         };
     
@@ -188,25 +206,6 @@
       button.addEventListener("click", () => {
         buttons.forEach(btn => btn.classList.remove("active"));
         button.classList.add("active");
-      });
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      // Prevent double-tap to zoom
-      let lastTouchEnd = 0;
-      document.addEventListener('touchend', (event) => {
-        const now = new Date().getTime();
-        if (now - lastTouchEnd <= 300) {
-          if (event.target.tagName !== 'BUTTON' && !event.target.closest('.card')) {
-            event.preventDefault(); // Prevent double-tap zoom only
-          }
-        }
-        lastTouchEnd = now;
-      }, { passive: false });
-
-      // Prevent long-press to select
-      document.body.addEventListener('contextmenu', (event) => {
-        event.preventDefault(); // Disable context menu on long-press
       });
     });
   </script>

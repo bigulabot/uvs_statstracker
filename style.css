@@ -13,13 +13,6 @@
     overflow: hidden; 
   }
   
-  body, .container {
-    -webkit-user-select: none; /* Disable text selection */
-    -webkit-touch-callout: none; /* Disable long-press context menu */
-    user-select: none;
-    touch-callout: none;
-  }
-  
   .container {
     height: 100%;
     max-width: 430px;
@@ -100,6 +93,12 @@
     width: 80px;
     height: 80px;
     margin: 0 auto;
+
+    /* Ensure it stays centered between the cards */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto; /* Ensure it is clickable */
 }
   .card p{
     font-weight: 700;
@@ -189,3 +188,15 @@
     transform: scale(1.1);
     transition: transform 0.2s ease;
   }
+
+.top-half,
+.bottom-half {
+  -webkit-tap-highlight-color: transparent; /* Prevent default tap highlight on iOS */
+  background-color: transparent; /* Default background */
+  transition: background-color 0.2s ease; /* Smooth transition */
+}
+
+.top-half.pressed,
+.bottom-half.pressed {
+  background-color: rgba(0, 0, 0, 0.2); /* Darken effect */
+}
