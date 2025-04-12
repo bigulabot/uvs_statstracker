@@ -187,3 +187,25 @@
   .bottom-half:active {
     background-color: rgba(0, 0, 0, 0.1); /* Darken effect */
   }
+
+/* Scale down the container for smaller screens */
+@media screen and (max-height: 700px) {
+  .container {
+    transform: scale(0.9); /* Scale down to 90% */
+    transform-origin: top center; /* Anchor the scaling to the top center */
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .container {
+    transform: scale(0.8); /* Scale down to 80% */
+    transform-origin: top center; /* Anchor the scaling to the top center */
+  }
+}
+
+@media screen and (max-height: 500px) {
+  .container {
+    transform: scale(0.7); /* Scale down to 70% */
+    transform-origin: top center; /* Anchor the scaling to the top center */
+  }
+}
