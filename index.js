@@ -171,17 +171,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    let timeout;
     const resetButton = document.querySelector('.round-button');
-    resetButton.addEventListener('click', () => {
-        const topTwoCards = document.querySelectorAll('.card');
-        if (topTwoCards.length >= 2) {
-            const firstCounter = topTwoCards[0].querySelector('h1');
-            const secondCounter = topTwoCards[1].querySelector('h1');
-            if (firstCounter) firstCounter.textContent = '0';
-            if (secondCounter) secondCounter.textContent = '0';
-        }
 
+    resetButton.addEventListener('mousedown', () => {
+        clearTimeout(timeout);
+        const cards = document.querySelectorAll('.card');
+        timeout = setTimeout(() => {
+            if (cards.length >= 4) {
+                const thirdCounter = cards[2].querySelector('h1');
+                const fourthCounter = cards[3].querySelector('h1');
+                if (thirdCounter) thirdCounter.textContent = '25';
+                if (fourthCounter) fourthCounter.textContent = '25';
+            }
+        }, 1500);
+
+        const firstCounter = cards[0].querySelector('h1');
+        const secondCounter = cards[1].querySelector('h1');
+        if (firstCounter) firstCounter.textContent = '0';
+        if (secondCounter) secondCounter.textContent = '0';
         positionButtons.forEach(b => b.classList.remove('active'));
+    });
+    resetButton.addEventListener('mouseup', () => {
+        clearTimeout(timeout);
     });
 
     // Prevent long press, double-tap zoom, and magnify on iOS
