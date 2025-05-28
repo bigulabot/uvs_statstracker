@@ -126,74 +126,45 @@ body,
   pointer-events: none;
 }
 
-.center-controls button:not(.active) img {
-  filter: grayscale(100%);
-}
-
-.center-controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  height: 60px;
-}
-
-.center-controls img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.round-button img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
 .center-controls button {
-  background: #D9D9D9;
+  background: transparent;
   border: none;
-  border-radius: 8px;
-  padding: 5px;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 71px;
-  height: 71px;
+  width: 100px;
+  height: 86px;
   transition: background-color 0.2s;
+  background-size: contain;
+  background-position: center;
+  z-index: 2;
 }
 
-.center-controls button.active img {
-  filter: none;
+.center-controls::before {
+  content: '';
+  width: 76px;
+  height: 79px;
+  background: #d9d9d9;
+  display: block;
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  top: 3px;
+  left: 13px;
 }
 
-.center-controls button img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: grayscale(100%);
+.center-controls .attack.off {
+  background-image: url('images/attack_off.svg');
 }
 
-.level.high.active svg rect:first-child {
-  fill: red;
+.center-controls .attack.low {
+  background-image: url('images/attack_low.svg');
 }
 
-.level.mid.active svg rect:nth-child(2) {
-  fill: orange;
+.center-controls .attack.mid {
+  background-image: url('images/attack_mid.svg');
 }
 
-.level.low.active svg rect:nth-child(3) {
-  fill: yellow;
-}
-
-.level.low.active svg .bg {
-  fill: yellow;
-}
-
-.center-controls button.active {
-  transform: scale(1.1);
-  transition: transform 0.2s ease;
+.center-controls .attack.high {
+  background-image: url('images/attack_high.svg');
 }
 
 .half {

@@ -166,12 +166,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelectorAll('.card');
     cards.forEach(card => new CardCounter(card));
 
-    const positionButtons = document.querySelectorAll('.center-controls button');
-    positionButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            positionButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        });
+    const positionButton = document.querySelector('.center-controls button');
+    positionButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (positionButton.classList.contains('off')) {
+            positionButton.classList.remove('off');
+            positionButton.classList.add('low');
+        }
+        else if (positionButton.classList.contains('low')) {
+            positionButton.classList.remove('low');
+            positionButton.classList.add('mid');
+        }
+        else if (positionButton.classList.contains('mid')) {
+            positionButton.classList.remove('mid');
+            positionButton.classList.add('high');
+        }
+        else if (positionButton.classList.contains('high')) {
+            positionButton.classList.remove('high');
+            positionButton.classList.add('off');
+        }
     });
 
     let timeout;
