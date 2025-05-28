@@ -85,6 +85,7 @@ class CardCounter {
         // Touch events
         element.addEventListener('touchstart', (e) => {
             this.isTouch = true;
+            element.classList.add('active');
             this.startHold(action);
             e.preventDefault();
         });
@@ -92,12 +93,14 @@ class CardCounter {
         // Mouse events (only if not touch)
         element.addEventListener('mousedown', (e) => {
             if (this.isTouch) return;
+            element.classList.add('active');
             this.startHold(action);
         });
 
         // Stop events
         ['mouseup', 'mouseleave', 'touchend', 'touchcancel'].forEach(evt => {
             element.addEventListener(evt, () => {
+                element.classList.remove('active');
                 this.stopHold(element);
                 // Reset touch flag after a delay to allow for proper event handling
                 if (evt.startsWith('touch')) {
@@ -172,10 +175,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     let timeout;
+
     const resetButton = document.querySelector('.round-button');
 
-    resetButton.addEventListener('mousedown', () => {
+    const reset = (e) => {
+        e.preventDefault();
         clearTimeout(timeout);
+
         const cards = document.querySelectorAll('.card');
         timeout = setTimeout(() => {
             if (cards.length >= 4) {
@@ -191,10 +197,26 @@ document.addEventListener('DOMContentLoaded', () => {
         if (firstCounter) firstCounter.textContent = '0';
         if (secondCounter) secondCounter.textContent = '0';
         positionButtons.forEach(b => b.classList.remove('active'));
-    });
-    resetButton.addEventListener('mouseup', () => {
+        resetButton.classList.add('active');
+    };
+
+    const resetClear = (e) => {
         clearTimeout(timeout);
+        resetButton.classList.remove('active');
+    };
+
+
+    resetButton.addEventListener('touchstart', (e) => {
+        console.log('touchstart');
+        reset(e);
+    }, { passive: false });
+    resetButton.addEventListener('mousedown', (e) => {
+        console.log('mousedown');
+        reset(e);
     });
+
+    resetButton.addEventListener('mouseup', resetClear);
+    resetButton.addEventListener('touchend', resetClear);
 
     // Prevent long press, double-tap zoom, and magnify on iOS
     document.body.addEventListener('touchstart', (e) => {
