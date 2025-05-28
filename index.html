@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
@@ -7,182 +8,333 @@
   <link rel="stylesheet" href="style.css">
   <style>
     /* Disable text selection and long-press magnify */
-    body, .container {
-      -webkit-touch-callout: none; /* Disable long press */
-      -webkit-user-select: none;  /* Disable text selection */
+    body,
+    .container {
+      -webkit-touch-callout: none;
+      /* Disable long press */
+      -webkit-user-select: none;
+      /* Disable text selection */
       user-select: none;
     }
   </style>
 </head>
+
 <body>
   <div class="container">
-    <div class="top-section">
+    <div class="cards">
       <div class="card">
-        <div class="plus"><img src="images/Plus.svg" alt=""></div>
+        <div class="increment-display">0</div>
         <p>Speed</p>
         <h1>0</h1>
         <div class="icon"><img src="images/current.svg" alt=""></div>
-        <div class="minus"><img src="images/Minus.svg" alt=""></div>
       </div>
       <div class="card">
-        <div class="plus"><img src="images/Plus.svg" alt=""></div>
+        <div class="increment-display">0</div>
         <p>Damage</p>
         <h1>0</h1>
         <div class="icon"><img src="images/DMG.svg" alt=""></div>
-        <div class="minus"><img src="images/Minus.svg" alt=""></div>
+      </div>
+      <div class="card">
+        <div class="increment-display">0</div>
+        <p>Player</p>
+        <h1>0</h1>
+        <div class="icon"><img src="images/HP.svg" alt=""></div>
+      </div>
+      <div class="card">
+        <div class="increment-display">0</div>
+        <p>Rival</p>
+        <h1>0</h1>
+        <div class="icon"><img src="images/HP.svg" alt=""></div>
       </div>
     </div>
     <div class="center-controls">
       <button class="level high">
-      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g filter="url(#filter0_d_55_416)">
-        <rect x="4" width="71.6115" height="71.6115" rx="20" fill="#D9D9D9"/>
-        <rect x="6.5" y="2.5" width="66.6115" height="66.6115" rx="17.5" stroke="black" stroke-width="5"/>
-        </g>
-        <path d="M26.9337 45.7203C26.1526 46.5014 26.1526 47.7677 26.9337 48.5487C27.7147 49.3298 28.9811 49.3298 29.7621 48.5487L26.9337 45.7203ZM51.1345 24.3479L28.8274 30.3251L45.1574 46.655L51.1345 24.3479ZM29.7621 48.5487L39.8208 38.49L36.9924 35.6616L26.9337 45.7203L29.7621 48.5487Z" fill="black"/>
-        <defs>
-        <filter id="filter0_d_55_416" x="0" y="0" width="79.6115" height="79.6115" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-        <feOffset dy="4"/>
-        <feGaussianBlur stdDeviation="2"/>
-        <feComposite in2="hardAlpha" operator="out"/>
-        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_55_416"/>
-        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_55_416" result="shape"/>
-        </filter>
-        </defs>
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g filter="url(#filter0_d_55_416)">
+            <rect x="4" width="71.6115" height="71.6115" rx="20" fill="#D9D9D9" />
+            <rect x="6.5" y="2.5" width="66.6115" height="66.6115" rx="17.5" stroke="black" stroke-width="5" />
+          </g>
+          <path
+            d="M26.9337 45.7203C26.1526 46.5014 26.1526 47.7677 26.9337 48.5487C27.7147 49.3298 28.9811 49.3298 29.7621 48.5487L26.9337 45.7203ZM51.1345 24.3479L28.8274 30.3251L45.1574 46.655L51.1345 24.3479ZM29.7621 48.5487L39.8208 38.49L36.9924 35.6616L26.9337 45.7203L29.7621 48.5487Z"
+            fill="black" />
+          <defs>
+            <filter id="filter0_d_55_416" x="0" y="0" width="79.6115" height="79.6115" filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha" />
+              <feOffset dy="4" />
+              <feGaussianBlur stdDeviation="2" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_55_416" />
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_55_416" result="shape" />
+            </filter>
+          </defs>
         </svg>
       </button>
       <button class="level mid">
         <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g filter="url(#filter0_d_55_422)">
-          <rect x="4" width="71.6115" height="71.6115" rx="20" fill="#D9D9D9"/>
-          <rect x="6.5" y="2.5" width="66.6115" height="66.6115" rx="17.5" stroke="black" stroke-width="5"/>
+            <rect x="4" width="71.6115" height="71.6115" rx="20" fill="#D9D9D9" />
+            <rect x="6.5" y="2.5" width="66.6115" height="66.6115" rx="17.5" stroke="black" stroke-width="5" />
           </g>
-          <path d="M23.6287 33.7412C22.5241 33.7412 21.6287 34.6366 21.6287 35.7412C21.6287 36.8458 22.5241 37.7412 23.6287 37.7412V33.7412ZM55.8538 35.7412L35.8538 24.1942V47.2882L55.8538 35.7412ZM23.6287 37.7412H37.8538V33.7412H23.6287V37.7412Z" fill="black"/>
+          <path
+            d="M23.6287 33.7412C22.5241 33.7412 21.6287 34.6366 21.6287 35.7412C21.6287 36.8458 22.5241 37.7412 23.6287 37.7412V33.7412ZM55.8538 35.7412L35.8538 24.1942V47.2882L55.8538 35.7412ZM23.6287 37.7412H37.8538V33.7412H23.6287V37.7412Z"
+            fill="black" />
           <defs>
-          <filter id="filter0_d_55_422" x="0" y="0" width="79.6115" height="79.6115" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-          <feOffset dy="4"/>
-          <feGaussianBlur stdDeviation="2"/>
-          <feComposite in2="hardAlpha" operator="out"/>
-          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_55_422"/>
-          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_55_422" result="shape"/>
-          </filter>
+            <filter id="filter0_d_55_422" x="0" y="0" width="79.6115" height="79.6115" filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha" />
+              <feOffset dy="4" />
+              <feGaussianBlur stdDeviation="2" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_55_422" />
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_55_422" result="shape" />
+            </filter>
           </defs>
-          </svg>
+        </svg>
       </button>
       <button class="level low">
         <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g filter="url(#filter0_d_55_419)">
-          <rect x="4" width="71.6115" height="71.6115" rx="20" fill="#D9D9D9" class="bg"/>
-          <rect x="6.5" y="2.5" width="66.6115" height="66.6115" rx="17.5" stroke="black" stroke-width="5"/>
+            <rect x="4" width="71.6115" height="71.6115" rx="20" fill="#D9D9D9" class="bg" />
+            <rect x="6.5" y="2.5" width="66.6115" height="66.6115" rx="17.5" stroke="black" stroke-width="5" />
           </g>
-          <path d="M29.7621 22.9337C28.9811 22.1526 27.7147 22.1526 26.9337 22.9337C26.1526 23.7147 26.1526 24.9811 26.9337 25.7621L29.7621 22.9337ZM51.1345 47.1345L45.1574 24.8274L28.8274 41.1574L51.1345 47.1345ZM26.9337 25.7621L36.9924 35.8208L39.8208 32.9924L29.7621 22.9337L26.9337 25.7621Z" fill="black"/>
+          <path
+            d="M29.7621 22.9337C28.9811 22.1526 27.7147 22.1526 26.9337 22.9337C26.1526 23.7147 26.1526 24.9811 26.9337 25.7621L29.7621 22.9337ZM51.1345 47.1345L45.1574 24.8274L28.8274 41.1574L51.1345 47.1345ZM26.9337 25.7621L36.9924 35.8208L39.8208 32.9924L29.7621 22.9337L26.9337 25.7621Z"
+            fill="black" />
           <defs>
-          <filter id="filter0_d_55_419" x="0" y="0" width="79.6115" height="79.6115" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-          <feOffset dy="4"/>
-          <feGaussianBlur stdDeviation="2"/>
-          <feComposite in2="hardAlpha" operator="out"/>
-          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_55_419"/>
-          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_55_419" result="shape"/>
-          </filter>
+            <filter id="filter0_d_55_419" x="0" y="0" width="79.6115" height="79.6115" filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha" />
+              <feOffset dy="4" />
+              <feGaussianBlur stdDeviation="2" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_55_419" />
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_55_419" result="shape" />
+            </filter>
           </defs>
-          </svg>
+        </svg>
       </button>
     </div>
-    <div class="round-button"><img src="images/Reset.png" alt=""></div>
-    <div class="bottom-section">
-        <div class="card">
-            <div class="plus"><img src="images/Plus.svg" alt=""></div>
-            <p>Player</p>
-            <h1>0</h1>
-            <div class="icon"><img src="images/HP.svg" alt=""></div>
-            <div class="minus"><img src="images/Minus.svg" alt=""></div>
-        </div>
-        <div class="card">
-            <div class="plus"><img src="images/Plus.svg" alt=""></div>
-            <p>Rival</p>
-            <h1>0</h1>
-            <div class="icon"><img src="images/HP.svg" alt=""></div>
-            <div class="minus"><img src="images/Minus.svg" alt=""></div>
-        </div>
-    </div>
+    <div class="round-button"></div>
   </div>
   <script>
+    class CardCounter {
+      constructor(cardElement) {
+        this.card = cardElement;
+        this.type = cardElement.querySelector('p').textContent.toLowerCase();
+        this.incrementDisplay = cardElement.querySelector('.increment-display');
+        console.log(this.incrementDisplay);
+        this.counter = cardElement.querySelector('h1');
+        this.holdInterval = null;
+        this.holdStartTime = null;
+        this.isTouch = false;
+        this.baseValue = null;
+        this.incrementTimeout = null;
+
+        this.init();
+      }
+
+      init() {
+        // this.createIncrementDisplay();
+        this.createInteractionAreas();
+        // this.setupEventListeners();
+      }
+
+      getValue() {
+        return parseInt(this.counter.textContent) || 0;
+      }
+
+      setValue(value) {
+        this.counter.textContent = value;
+      }
+
+      increment() {
+        this.setValue(this.getValue() + 1);
+        this.updateIncrementDisplay();
+      }
+
+      decrement() {
+        const currentValue = this.getValue();
+        if (this.type === 'speed' || this.type === 'damage') {
+          this.setValue(currentValue - 1);
+        } else {
+          this.setValue(Math.max(0, currentValue - 1));
+        }
+        this.updateIncrementDisplay();
+      }
+
+      getAcceleratedInterval() {
+        if (!this.holdStartTime) return 200;
+
+        const holdDuration = Date.now() - this.holdStartTime;
+
+        // Acceleration tiers
+        if (holdDuration < 1000 / 2) return 200;      // 0-1s: 200ms interval
+        if (holdDuration < 2000 / 2) return 150;      // 1-2s: 150ms interval
+        if (holdDuration < 3000 / 2) return 100;      // 2-3s: 100ms interval
+        if (holdDuration < 5000 / 2) return 50;       // 3-5s: 50ms interval
+        return 25;                                // 5s+: 25ms interval (very fast)
+      }
+
+      startHold(action) {
+        if (this.baseValue == null)
+          this.baseValue = this.getValue(); // Store the starting value
+
+        this.holdStartTime = Date.now();
+        action(); // Execute immediately
+
+        const accelerateHold = () => {
+          action();
+          const interval = this.getAcceleratedInterval();
+          this.holdInterval = setTimeout(accelerateHold, interval);
+        };
+
+        this.holdInterval = setTimeout(accelerateHold, this.getAcceleratedInterval());
+
+        this.updateIncrementDisplay();
+      }
+
+      stopHold(element) {
+        if (this.holdInterval) {
+          clearTimeout(this.holdInterval);
+          this.holdInterval = null;
+        }
+        this.holdStartTime = null;
+        // element.classList.remove('pressed');
+        this.startIncrementTimeout();
+      }
+
+      setupHold(element, action) {
+        // Touch events
+        element.addEventListener('touchstart', (e) => {
+          console.log("touch start");
+          this.isTouch = true;
+          // element.classList.add('pressed');
+          this.startHold(action);
+          e.preventDefault();
+        });
+
+        // Mouse events (only if not touch)
+        element.addEventListener('mousedown', (e) => {
+          console.log("mousedown");
+          if (this.isTouch) return;
+          // element.classList.add('pressed');
+          this.startHold(action);
+        });
+
+        // Stop events
+        ['mouseup', 'mouseleave', 'touchend', 'touchcancel'].forEach(evt => {
+          element.addEventListener(evt, () => {
+            this.stopHold(element);
+            // Reset touch flag after a delay to allow for proper event handling
+            if (evt.startsWith('touch')) {
+              setTimeout(() => { this.isTouch = false; }, 100);
+            }
+          });
+        });
+      }
+
+      createIncrementDisplay() {
+        this.incrementDisplay = document.createElement('div');
+        this.incrementDisplay.className = 'increment-display';
+
+        Object.assign(this.incrementDisplay.style, {
+          position: 'absolute',
+          top: '10px',
+          right: '10px',
+          fontSize: '14px',
+          fontWeight: 'bold',
+          color: 'gray',
+          backgroundColor: 'rgba(255, 255, 255, 0)',
+          padding: '2px 6px',
+          opacity: '0',
+          transition: 'opacity 0.2s ease',
+          pointerEvents: 'none',
+          zIndex: '10'
+        });
+
+        this.card.appendChild(this.incrementDisplay);
+      }
+
+      updateIncrementDisplay() {
+        clearTimeout(this.incrementTimeout);
+        if (this.baseValue === null) return;
+
+        const currentValue = this.getValue();
+        const increment = currentValue - this.baseValue;
+
+
+        this.incrementDisplay.textContent = increment > 0 ? `+${increment}` : `${increment}`;
+        this.incrementDisplay.style.opacity = '1';
+
+        // // Clear any existing timeout
+        // if (this.incrementTimeout) {
+        //   console.log("clearing timeout");
+        // }
+      }
+
+      startIncrementTimeout() {
+        // Start the timeout to hide the increment display
+        console.log("starting timeout");
+        clearTimeout(this.incrementTimeout);
+        this.incrementTimeout = setTimeout(() => {
+          this.hideIncrementDisplay();
+        }, 1000); // Hide after 2 seconds of inactivity
+      }
+
+      hideIncrementDisplay() {
+        console.log("hiding display");
+        this.incrementDisplay.style.opacity = '0';
+        this.baseValue = null;
+        // if (this.incrementTimeout) {
+        //   clearTimeout(this.incrementTimeout);
+        //   this.incrementTimeout = null;
+        // }
+      }
+
+      createInteractionAreas() {
+        const topHalf = this.createHalfElement('top-half', { top: 0 });
+        const bottomHalf = this.createHalfElement('bottom-half', { bottom: 0 });
+
+        this.setupHold(topHalf, () => this.increment());
+        this.setupHold(bottomHalf, () => this.decrement());
+
+        this.card.appendChild(topHalf);
+        this.card.appendChild(bottomHalf);
+      }
+
+      createHalfElement(className, position) {
+        const element = document.createElement('div');
+        element.className = `half ${className}`;
+
+        Object.assign(element.style, {
+          position: 'absolute',
+          left: '0',
+          width: '100%',
+          height: '50%',
+          cursor: 'pointer',
+          ...position
+        });
+
+        return element;
+      }
+    }
     document.addEventListener('DOMContentLoaded', () => {
-      let holdInterval;
+      console.log("loaded");
+      // Initialize all card counters
       const cards = document.querySelectorAll('.card');
-      cards.forEach(card => {
-        const type = card.querySelector('p').textContent.toLowerCase();
-        const counter = card.querySelector('h1');
-        const increment = () => {
-          counter.textContent = parseInt(counter.textContent) + 1;
-        };
-        const decrement = () => {
-          if (type === 'speed' || type === 'damage') {
-            counter.textContent = parseInt(counter.textContent) - 1;
-          } else {
-            counter.textContent = Math.max(0, parseInt(counter.textContent) - 1);
-          }
-        };
-        const setupHold = (element, action) => {
-          let isTouch = false; // Flag to track touch events
+      console.log(cards);
+      cards.forEach(card => new CardCounter(card));
 
-          element.addEventListener('touchstart', (e) => {
-            isTouch = true; // Set the flag to true for touch events
-            action();
-            element.classList.add('pressed'); // Add pressed class
-            holdInterval = setInterval(action, 200);
-            e.preventDefault(); // Prevent default behavior
-          });
-
-          element.addEventListener('mousedown', (e) => {
-            if (isTouch) return; // Skip if touch event was triggered
-            action();
-            element.classList.add('pressed'); // Add pressed class
-            holdInterval = setInterval(action, 200);
-          });
-
-          ['mouseup', 'mouseleave', 'touchend', 'touchcancel'].forEach(evt =>
-            element.addEventListener(evt, () => {
-              clearInterval(holdInterval);
-              element.classList.remove('pressed'); // Remove pressed class
-            })
-          );
-        };
-
-        const topHalf = document.createElement('div');
-        topHalf.className = 'top-half';
-        topHalf.style.position = 'absolute';
-        topHalf.style.top = 0;
-        topHalf.style.left = 0;
-        topHalf.style.width = '100%';
-        topHalf.style.height = '50%';
-        topHalf.style.cursor = 'pointer';
-
-        const bottomHalf = document.createElement('div');
-        bottomHalf.className = 'bottom-half';
-        bottomHalf.style.position = 'absolute';
-        bottomHalf.style.bottom = 0;
-        bottomHalf.style.left = 0;
-        bottomHalf.style.width = '100%';
-        bottomHalf.style.height = '50%';
-        bottomHalf.style.cursor = 'pointer';
-
-        setupHold(topHalf, increment);
-        setupHold(bottomHalf, decrement);
-
-        card.appendChild(topHalf);
-        card.appendChild(bottomHalf);
-      });
-    
       const positionButtons = document.querySelectorAll('.center-controls button');
       positionButtons.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -190,19 +342,19 @@
           btn.classList.add('active');
         });
       });
-    
-      const resetButton = document.querySelector('.round-button');
-        resetButton.addEventListener('click', () => {
-          const topTwoCards = document.querySelectorAll('.card');
-          if (topTwoCards.length >= 2) {
-            const firstCounter = topTwoCards[0].querySelector('h1');
-            const secondCounter = topTwoCards[1].querySelector('h1');
-            if (firstCounter) firstCounter.textContent = '0';
-            if (secondCounter) secondCounter.textContent = '0';
-          }
 
-          positionButtons.forEach(b => b.classList.remove('active'));
-        });
+      const resetButton = document.querySelector('.round-button');
+      resetButton.addEventListener('click', () => {
+        const topTwoCards = document.querySelectorAll('.card');
+        if (topTwoCards.length >= 2) {
+          const firstCounter = topTwoCards[0].querySelector('h1');
+          const secondCounter = topTwoCards[1].querySelector('h1');
+          if (firstCounter) firstCounter.textContent = '0';
+          if (secondCounter) secondCounter.textContent = '0';
+        }
+
+        positionButtons.forEach(b => b.classList.remove('active'));
+      });
 
     });
 
@@ -243,4 +395,5 @@
     });
   </script>
 </body>
+
 </html>
