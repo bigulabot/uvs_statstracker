@@ -131,15 +131,16 @@ body,
   border: none;
   cursor: pointer;
   width: 100px;
-  height: 86px;
+  height: 90px;
   transition: background-color 0.2s;
   background-size: contain;
   background-position: center;
   z-index: 2;
+  background-repeat: no-repeat;
 }
 
 .center-controls::before {
-  content: '';
+  /* content: ''; */
   width: 76px;
   height: 79px;
   background: #d9d9d9;
@@ -149,22 +150,6 @@ body,
   border-radius: 50%;
   top: 3px;
   left: 13px;
-}
-
-.center-controls .attack.off {
-  background-image: url('images/attack_off.svg');
-}
-
-.center-controls .attack.low {
-  background-image: url('images/attack_low.svg');
-}
-
-.center-controls .attack.mid {
-  background-image: url('images/attack_mid.svg');
-}
-
-.center-controls .attack.high {
-  background-image: url('images/attack_high.svg');
 }
 
 .half {
@@ -195,4 +180,20 @@ body,
   z-index: 10;
   margin-top: -30px;
   margin-bottom: 0px;
+}
+
+.center-controls .attack.off {
+  background-image: url('images/attack_off.svg');
+}
+
+.center-controls .attack.low {
+  background-image: url('images/attack_low.svg');
+}
+
+.center-controls .attack.mid {
+  background-image: url('images/attack_mid.svg');
+}
+
+.center-controls .attack.high {
+  background-image: url('images/attack_high.svg');
 }

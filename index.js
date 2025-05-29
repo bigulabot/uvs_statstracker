@@ -171,19 +171,19 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         if (positionButton.classList.contains('off')) {
             positionButton.classList.remove('off');
-            positionButton.classList.add('low');
-        }
-        else if (positionButton.classList.contains('low')) {
-            positionButton.classList.remove('low');
-            positionButton.classList.add('mid');
-        }
-        else if (positionButton.classList.contains('mid')) {
-            positionButton.classList.remove('mid');
             positionButton.classList.add('high');
         }
         else if (positionButton.classList.contains('high')) {
             positionButton.classList.remove('high');
-            positionButton.classList.add('off');
+            positionButton.classList.add('mid');
+        }
+        else if (positionButton.classList.contains('mid')) {
+            positionButton.classList.remove('mid');
+            positionButton.classList.add('low');
+        }
+        else if (positionButton.classList.contains('low')) {
+            positionButton.classList.remove('low');
+            positionButton.classList.add('high');
         }
     });
 
@@ -209,7 +209,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const secondCounter = cards[1].querySelector('h1');
         if (firstCounter) firstCounter.textContent = '0';
         if (secondCounter) secondCounter.textContent = '0';
-        positionButtons.forEach(b => b.classList.remove('active'));
+        positionButton.classList.remove('low');
+        positionButton.classList.remove('mid');
+        positionButton.classList.remove('high');
+        positionButton.classList.add('off');
         resetButton.classList.add('active');
     };
 
